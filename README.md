@@ -1,5 +1,5 @@
 # Data Structures
-C++ provides a rich collection of data structures and algorithms via the STL. Since DSA is an important topic for many college level courses and interview programs, being a fun topic to learn in general. I decided to make this part of my `coding-cpp` repository a place to hold my personal files for the Data Structures written in C.
+C++ provides a rich collection of data structures and algorithms via the STL. Since DSA is an important topic for many college level courses and interview programs, being a fun topic to learn in general. I decided to make this repository a place to hold my personal files for the Data Structures written in C.
 
 # Code Standards
 * The `C99` standard is used and expected from other contributors who may wish to contribute.
@@ -26,9 +26,9 @@ If you want to add the data structure `foo` to this repository, do the following
 3. The `foo` directory is the source directory. Add the file `foo.c` to this directory and define all the functions required in `foo.h`
     1. As a general rule of thumb, functions which are not to be called by the user but only are present as helpers must be declared and defined in `foo.c`, `foo.h` should only contain the macros, typedefs, structs and prototypes of the functions which are to be used by the users of library.
 4. The `Examples/foo` should contain atleast one example and a fully completed Makefile which builds the example(s). Look at the Makefile for Vectors for more details.
-5. The [DataStructures.md](https://github.com/JaytidaA/coding-cpp/Data%20Structures%20in%20C/tree/main/DataStructures.md) file should be updated as well. Adding documentations for the added functionality, Makefile and Usage instructions is a must.
-6. The [ErrorHandling.md](https://github.com/JaytidaA/coding-cpp/Data%20Structures%20in%20C/tree/main/ErrorHandling.md) file should be updated if new error handlers have been added in `err_handle.h`.
-7. The [Directory Structure](https://github.com/JaytidaA/coding-cpp/tree/main/Data%20Structures%20in%20C#directory-structure) section of this README should be updated as well. The steps to do so are presented [below](https://github.com/JaytidaA/coding-cpp/tree/main/Data%20Structures%20in%20C#steps-to-update-directory-structure).
+5. The [DataStructures.md](https://github.com/JaytidaA/Data-Structures-in-C/tree/main/DataStructures.md) file should be updated as well. Adding documentations for the added functionality, Makefile and Usage instructions is a must.
+6. The [ErrorHandling.md](https://github.com/JaytidaA/Data-Structures-in-C/tree/main/ErrorHandling.md) file should be updated if new error handlers have been added in `err_handle.h`.
+7. The [Directory Structure](https://github.com/JaytidaA/Data-Structures-in-C/tree/main/README.md#directory-structure) section of this README should be updated as well. The steps to do so are presented [below](https://github.com/JaytidaA/Data-Structures-in-C/tree/main/README.md#steps-to-update-directory-structure).
 
 # Steps to update Directory Structure
 Ensure that the `tree` command line utility is installed on your system.

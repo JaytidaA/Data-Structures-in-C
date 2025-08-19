@@ -1,0 +1,5 @@
+# Files which should not be visible
+*.out
+.clangd
+
+# Folders which should not be visible

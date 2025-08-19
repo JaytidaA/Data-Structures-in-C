@@ -92,7 +92,7 @@ To make use of the `vector` data structure on your own follow the following step
 
 2. Compile the `vector.c` and `utils.c` source files to their object files (I am using `gcc` in this example, use whatever compiler you would like,I am using gcc in this example, use whatever compiler you would like)
 ```sh
-$ cd $HOME/"Data Structures in C"
+$ cd $HOME/"Data-Structures-in-C"
 $ mkdir -p bin
 $ gcc -o bin/vector.o -c vector/vector.c -I include
 $ gcc -o bin/utils.o -c utils/vector_utils.c -I include

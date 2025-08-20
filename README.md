@@ -15,6 +15,7 @@ C++ provides a rich collection of data structures and algorithms via the STL. Si
 ├── Examples          : Contains examples and Makefiles to build them.
 ├── include           : Contains the header files of every data structure, utils and err_handle.
 ├── README.md         : This document.
+├── stack             : Contains the source files for the functionality of std::stack to C.
 ├── utils             : Contains utility functions and error handling.
 └── vector            : Contains the source files for the functionality of std::vector to C.
 ```

@@ -127,7 +127,7 @@ typedef struct node {
 
 typedef struct {
     node *head;
-    size_t element_size;
+    size_t elm_size;
 } Stack;
 
 /* prototypes */

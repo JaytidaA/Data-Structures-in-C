@@ -31,4 +31,27 @@
     }                                                  \
 } while (0)
 
+/*******************************************************
+ * print_struct_vector: Prints a vector of structures  *
+ *                      given a `printer` function.    *
+ *******************************************************/
+#define print_struct_vector(vec, type, printer) do {   \
+    if (IS_PRINTABLE) {                                \
+        putchar('<');                                  \
+        if (empty(vec)) {                              \
+            puts(" >");                                \
+        } else {                                       \
+            char pstring[ELM_MAX_PRINT_LEN + 1];       \
+            printer(*(type *)front(vec), pstring);  \
+            printf(pstring);                           \
+            for (size_t i = 1; i < size(vec); i++) {   \
+                printf(", ");                          \
+                printer(*(type *)front(vec), pstring); \
+                printf(pstring);                       \
+            }                                          \
+            puts(">");                                 \
+        }                                              \
+    }                                                  \
+} while (0)
+
 #endif

@@ -10,6 +10,7 @@
 
 #ifdef __STDC_HOSTED__
 #define IS_PRINTABLE 1
+#define ELM_MAX_PRINT_LEN 255
 #else
 #define IS_PRINTABLE 0
 #endif

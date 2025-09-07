@@ -16,7 +16,7 @@
 
 static inline void err_null_malloc(const char *func, size_t size) {
 #if IS_PRINTABLE
-	fprintf(stderr, "[ERROR] (%s): Could not allocate %zu elements!\n", func, size);
+	fprintf(stderr, "[ERROR] (%s): Could not allocate %zu bytes!\n", func, size);
 #endif
 	exit(EXIT_FAILURE);
 }

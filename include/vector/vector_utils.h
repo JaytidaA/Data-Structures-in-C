@@ -42,12 +42,15 @@
             puts(" >");                                \
         } else {                                       \
             char pstring[ELM_MAX_PRINT_LEN + 1];       \
-            printer(*(type *)front(vec), pstring);  \
-            printf(pstring);                           \
+            (printer)(*(type *)front(vec), pstring);   \
+            printf("%s", pstring);                     \
             for (size_t i = 1; i < size(vec); i++) {   \
                 printf(", ");                          \
-                printer(*(type *)front(vec), pstring); \
-                printf(pstring);                       \
+                (printer)(                             \
+                    *(type *)at_ptr(vec, i),           \
+                    pstring                            \
+                );                                     \
+                printf("%s", pstring);                 \
             }                                          \
             puts(">");                                 \
         }                                              \

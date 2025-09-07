@@ -55,7 +55,9 @@ Conditional programming exists and is controlled via the following macros:
 
 
 ## Utilities
-Currently only one utility is provided by Vector and it is the printing one. Include `include/vector/vector_utils.h` to get access to the `print_vector` ~~function~~ parameterised macro.
+Printing utilities are provided for the vectors currently. Include `include/vector/vector_utils.h` to get access to the `print_vector` and `print_struct_vector` ~~function~~ parameterised macros.
+
+### `print_vector`
 ```c
 #define print_vector(vec, type, fmt) ...
 ```
@@ -65,6 +67,52 @@ The parameters are as follows:
 * `fmt`: Format string for the vector elements. e.g. if `int`s are stored in the vector then this parameter should be `"%d"`.
 
 Since it requires the use of a hosted implementation of C, if one is not present the function simply does nothing otherwise, it prints the Items of the vector in angular brackets and prints a new line.
+
+### `print_struct_vector`
+```c
+#define print_struct_vector(vec, type, printer) ...
+```
+The parameters are as follows:
+* `vec`: A pointer to the vector data structure to be printed.
+* `type`: Type of the elements stored in the vector pointed to by `vec`.
+* `printer`: A function pointer of the type `void (*printer)(type elm, char pstring[ELM_MAX_PRINT_LEN+1])`. 
+
+The final argument replaces the format string for the built-in datatypes. The function should write whatever data is required to the `pstring` parameter ensuring the length of the element written is less than or equal to `ELM_MAX_PRINT_LEN` (defined in `include/utils.h`). The programmer should ensure that the final character of `pstring` should be a (`\0`) character. It is recommended the string utility functions from the `<string.h>` header file be used. The programmer need not worry about allocating and deallocating the `pstring` character array itself as it is taken care of inside the macro.
+
+Since it requires the use of a hosted implementation of C, if one is not present the function simply does nothing otherwise, it prints the Items of the vector in angular brackets and prints a new line.
+
+Example of `print_struct_vector`:
+```c
+typedef struct complex_number {
+    double real; double imag
+} cnumber;
+
+void complex_printer(cnumber number, char pstring[ELM_MAX_PRINT_LEN + 1])
+{
+    if (!(number.imag))
+        sprintf(pstring, "%g", number.real);
+    else if (number.imag > 0)
+        sprintf(pstring, "%g + %gi", number.real, number.imag);
+    else
+        sprintf(pstring, "%g - %gi", number.real, -number.imag);
+}
+
+Vector *v = new_vector(sizeof(cnumber));
+/*
+ * Note that the parenthesis around the initialiser list is required
+ * to prevent the preprocessor from interpreting the struct as multiple
+ * arguments.
+ */
+push_back(v, cnumber, ((cnumber) {1.0, 0.0}));
+push_back(v, cnumber, ((cnumber) {1.5, 0.5}));
+push_back(v, cnumber, ((cnumber) {2.0, -2.0}));
+print_struct_vector(v, cnumber, *complex_printer);
+```
+
+Output:
+```
+<1, 1.5 + 0.5i, 2 - 2i>
+```
 
 ## Errors
 Currently only one error function is used by Vector, it is `err_null_malloc`, which prints to the standard error stream (in case of hosted implementation) if the ouput of the malloc function is NULL and exits the program.

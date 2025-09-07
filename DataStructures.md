@@ -13,7 +13,7 @@ Following are the structs, typedefs, functions and macros defined in vector.h
 // defines allocation function
 
 // define a convenient wrapper for push back (refer ahead) with the type of the element to be added.
-#define push_back(vec, type, elm) do {\
+#define push_back(vec, type, elm) do {
     type _temp = elm;                 \
     _push_back_ptr(vec, &_temp);      \
 } while (0)
@@ -158,3 +158,55 @@ $ gcc -o program bin/myproject.o $HOME/Data\ Structures\ in\ C/bin/*.o
 ```sh
 ./program
 ```
+
+# Stack
+Defined as the `Stack` struct, this provides a LIFO (Last-In, First-Out) stack. It supports generic typing by making internal copies of the user's data, requiring the user to specify the element size upon creation.
+
+Following are the structs, typedefs, and functions defined in `stack.h`:
+```c
+/* Special value to indicate that the stack is empty */
+#define STACK_EMPTY NULL
+
+/* structs */
+typedef struct node {
+    void *value;
+    struct node *next;
+} node;
+
+typedef struct {
+    node *head;
+    size_t elm_size;
+} Stack;
+
+/* prototypes */
+Stack *create_stack(size_t elm_size);   // Creates a new stack for elements of a given size
+void free_stack(Stack *s);                  // Frees the stack and all remaining elements
+
+void push(Stack *s, void *v);           // Pushes a copy of the element onto the stack
+void *pop(Stack *s);                         // Pops an element, returns a pointer
+void *top(const Stack *s);            // Returns a pointer to the top element
+
+bool empty(const Stack *s);                 // Checks if the stack is empty
+size_t stack_size(const Stack *s);          // Returns the number of elements in the stack
+```
+
+## Utilities
+Currently, no utility functions like a print function are provided for the Stack.
+
+## Errors
+The Stack uses the `err_null_malloc` function from `err_handle.h`. It prints an error message to the standard error stream and exits the program if a `malloc` call fails.
+
+## Examples
+You can build the examples as follows (ensure that you have `make` installed on your system):
+```sh
+$ cd Examples/stack
+$ make
+$ ./build/general
+```
+Examples:
+1. `general`: Presents the general functionality of the "copy-in" stack.
+
+Run `make clean` or `make clean_all` to clean up binary files and/or executables after Makefile usage.
+
+## Usage
+Steps similar to [Vector usage](#usage).

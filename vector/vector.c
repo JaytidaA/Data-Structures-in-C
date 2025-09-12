@@ -197,6 +197,7 @@ void vmem_reallocation(Vector *v)
 	memcpy(temp, v->arr, v->size * v->elm_size);
 	free(v->arr);
 	v->arr = temp;
+	v->capacity = new_cap;
 }
 
 /******************************************************************************

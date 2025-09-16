@@ -158,3 +158,11 @@ $ gcc -o program bin/myproject.o $HOME/Data\ Structures\ in\ C/bin/*.o
 ```sh
 ./program
 ```
+
+# LinkedLists
+Defined as the `LinkedList` struct, Linked Lists provide an interface similar to `std::list` in C++. Supports generic typing using `void *` (void pointers). `LinkedLists` also make use of a helper struct called `Node` (name subject to change in the future).
+
+## Utilities
+## Errors
+## Examples
+## Usage

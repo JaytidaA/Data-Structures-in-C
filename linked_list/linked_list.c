@@ -132,7 +132,7 @@ void *LinkedList_at_ptr(LinkedList *l, size_t i)
 }
 
 /******************************************************************************
- * LinkedList_size: Returns the number of nodes in the LinkedList.            *
+ * LinkedList_empty: Returns whether LinkedList is empty or not.              *
  ******************************************************************************/
 bool LinkedList_empty(const LinkedList *l)
 {

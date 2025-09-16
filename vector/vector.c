@@ -23,7 +23,7 @@ Vector *new_vector(size_t e)
 {
 	Vector *temp = (Vector *) malloc(sizeof(Vector));
 	if (!temp)
-		err_null_malloc(__func__, 1);
+		err_null_malloc(__func__, sizeof(Vector));
 
 	temp->size = 0;
 	temp->capacity = INITIAL_VEC_CAP;
@@ -44,14 +44,14 @@ Vector *new_vector_cap(size_t e, size_t n)
 {
 	Vector *temp = (Vector *) malloc(sizeof(Vector));
 	if (!temp)
-		err_null_malloc(__func__, 1);
+		err_null_malloc(__func__, sizeof(Vector));
 
 	temp->size = 0;
 	temp->capacity = (!n) ? INITIAL_VEC_CAP : n;
 	temp->elm_size = e;
 	temp->arr = malloc(temp->capacity * e);
 	if (!(temp->arr))
-		err_null_malloc(__func__, n);
+		err_null_malloc(__func__, n * e);
 
 	return temp;
 }
@@ -68,14 +68,14 @@ Vector *new_vector_fill(size_t e, size_t n, void *i)
 
 	Vector *temp = (Vector *) malloc(sizeof(Vector));
 	if (!temp)
-		err_null_malloc(__func__, 1);
+		err_null_malloc(__func__, sizeof(Vector));
 
 	temp->size = n;
 	temp->capacity = n;
 	temp->elm_size = e;
 	temp->arr = malloc(n * e);
 	if (!(temp->arr))
-		err_null_malloc(__func__, n);
+		err_null_malloc(__func__, n * e);
 	
 	for (int j = 0; j < n; j++)
 		memcpy(temp->arr + (j * e), i, e);

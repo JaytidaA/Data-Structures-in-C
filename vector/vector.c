@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include "err_handle.h"
 #include "vector/vector.h"
 
@@ -112,7 +113,7 @@ void _push_back_ptr(Vector *v, void *i)
 {
 	if (v->size == v->capacity)
 		vmem_reallocation(v);
-	memcpy(v->arr + (v->elm_size * (v->size)++), i, v->elm_size);
+	memcpy(((uint8_t *) v->arr) + (v->elm_size * (v->size)++), i, v->elm_size);
 }
 
 /******************************************************************************
@@ -137,7 +138,7 @@ void *front(const Vector *v)
  ******************************************************************************/
 void *back(const Vector *v)
 {
-	return empty(v) ? NULL : (v->arr + ((v->size - 1) * v->elm_size));
+	return empty(v) ? NULL : (((uint8_t *) v->arr) + ((v->size - 1) * v->elm_size));
 }
 
 /******************************************************************************
@@ -162,7 +163,7 @@ size_t capacity(const Vector *v)
  ******************************************************************************/
 void *at_ptr(const Vector *v, size_t i)
 {
-	return (i >= v->size) ? NULL : (v->arr + (i * v->elm_size));
+	return (i >= v->size) ? NULL : (((uint8_t *) v->arr) + (i * v->elm_size));
 }
 
 /******************************************************************************

@@ -10,6 +10,18 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+/* LinkedList_push_back: Push an element to the end of the list */
+#define LinkedList_push_back(ll, type, elm) do {\
+    type _temp = elm;                           \
+    _LinkedList_push_back_ptr(ll, &_temp);      \
+} while (0)
+
+/* LinkedList_push_front: Push an element to the end of the list */
+#define LinkedList_push_front(ll, type, elm) do {\
+    type _temp = elm;                            \
+    _LinkedList_push_front_ptr(ll, &_temp);      \
+} while (0)
+
 typedef struct Node {
     void *data;
     struct Node *next;
